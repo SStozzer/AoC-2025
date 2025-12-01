@@ -2,6 +2,13 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/*
+
+Made by: Connor Storey
+Date: 01/12/2025
+
+*/
+
 public class SafeCracker {
     public static void main(String[] args) {
         try {
