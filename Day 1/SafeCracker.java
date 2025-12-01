@@ -1,0 +1,60 @@
+import java.io.File;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class SafeCracker {
+    public static void main(String[] args) {
+        try {
+            File safeFile = new File("..\\AoC-2025\\Day 1\\input.txt");
+            Scanner fileDataInput = new Scanner(safeFile);
+            ArrayList<String> data = new ArrayList<>();
+
+            String lineSplit;
+            int lineNumber;
+            int safePosition = 50;
+            int total = 0;
+
+            while (fileDataInput.hasNextLine())
+                data.add(fileDataInput.nextLine());
+
+            for (int i = 0; i < data.size(); i++) {
+                if (data.get(i).contains("R")) {
+                    lineSplit = data.get(i).substring(1);
+                    lineNumber = Integer.parseInt(lineSplit);
+
+                    for (int j = 0; j < lineNumber; j++) {
+                        safePosition++;
+                        if (safePosition > 99) {
+                            safePosition = 0;
+                        }
+                        if (safePosition == 0) {
+                            total++;
+                        }
+                    }
+                } else if (data.get(i).contains("L")) {
+                    lineSplit = data.get(i).substring(1);
+                    lineNumber = Integer.parseInt(lineSplit);
+
+                    for (int j = 0; j < lineNumber; j++) {
+                        safePosition--;
+                        if (safePosition < 0) {
+                            safePosition = 99;
+                        }
+                        if (safePosition == 0) {
+                            total++;
+                        }
+                    }
+                    
+                }
+               
+            
+            }
+
+            System.out.println("Total times at 0: " + total);
+
+            fileDataInput.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
