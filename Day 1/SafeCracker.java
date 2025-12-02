@@ -19,7 +19,8 @@ public class SafeCracker {
             String lineSplit;
             int lineNumber;
             int safePosition = 50;
-            int total = 0;
+            int totalp1 = 0;
+            int totalp2 = 0;
 
             while (fileDataInput.hasNextLine())
                 data.add(fileDataInput.nextLine());
@@ -35,7 +36,7 @@ public class SafeCracker {
                             safePosition = 0;
                         }
                         if (safePosition == 0) {
-                            total++;
+                            totalp2++;
                         }
                     }
                 } else if (data.get(i).contains("L")) {
@@ -48,16 +49,19 @@ public class SafeCracker {
                             safePosition = 99;
                         }
                         if (safePosition == 0) {
-                            total++;
+                            totalp2++;
                         }
                     }
                     
                 }
                
-            
+                if (safePosition == 0) {
+                    totalp1++;
+                }
             }
 
-            System.out.println("Total times at 0: " + total);
+            System.out.println("Total times at 0 after rotation ends: " + totalp1);
+            System.out.println("Total times at 0: " + totalp2);
 
             fileDataInput.close();
         } catch (Exception e) {
